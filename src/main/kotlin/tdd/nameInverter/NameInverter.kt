@@ -3,6 +3,8 @@ package tdd.nameInverter
 class NameInverter {
     fun inverter(name: String?): String{
         if (name.isNullOrBlank()) return ""
-        return name
+        val split = name.split(" ")
+        return if (split.size > 1) "${split[1]}, ${split[0]}"
+        else split[0]
     }
 }

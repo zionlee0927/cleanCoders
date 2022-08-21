@@ -21,4 +21,9 @@ internal class NameInverterTest{
     fun given_simple_name___returns_simple_name(){
         assertThat(nameInverter.inverter("lee")).isEqualTo("lee")
     }
+
+    @Test
+    fun given_first_last___returns_last_first(){
+        assertThat(nameInverter.inverter("First Last")).isEqualTo("Last, First")
+    }
 }
