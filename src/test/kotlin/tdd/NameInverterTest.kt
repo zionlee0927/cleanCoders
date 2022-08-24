@@ -36,4 +36,10 @@ internal class NameInverterTest{
     fun given_first_last_with_multiple_spaces_between___returns_last_first(){
         assertThat(nameInverter.inverter("First     Last")).isEqualTo("Last, First")
     }
+
+    @Test
+    fun given_honorific_and_first_last___returns_last_first(){
+        assertThat(nameInverter.inverter("Mr. First Last")).isEqualTo("Last, First")
+        assertThat(nameInverter.inverter("Mrs. First Last")).isEqualTo("Last, First")
+    }
 }
