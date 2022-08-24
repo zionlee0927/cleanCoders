@@ -4,34 +4,40 @@ class NameInverter {
     fun inverter(name: String?): String{
         if (name.isNullOrBlank()) return ""
 
-        val split = name.trim().split(" ").toMutableList()
+        val split = splitNames(name)
 
         removeHonorific(split)
 
-        var invertedName = "${split.last()}, ${split.first()}"
+        if (split.size == 1) return split[0]
+
+        var invertedName = "${split[1]}, ${split[0]}"
 
         extractPostNominals(split)
             ?.let { invertedName = addPostNominals(it, split) }
 
-        return if (split.size > 1) invertedName
-        else split.first()
+        return invertedName
+
     }
 
-    private fun addPostNominals(
-        postNominals: String,
-        split: MutableList<String>
-    ) = "${split.last()}, ${split.first()} $postNominals"
-
-    private fun extractPostNominals(split: MutableList<String>): String? {
-        val postNominals = listOf("Sr.")
-        val last = split.last()
-        return if (postNominals.contains(last)) split.removeLast()
-        else null
-    }
+    private fun splitNames(name: String)
+    = name.trim().split(" ")
+        .filter { it.isNotEmpty() }
+        .toMutableList()
 
     private fun removeHonorific(split: MutableList<String>) {
         val honorific = listOf("Mr.", "Mrs.")
         val first = split[0]
         if (honorific.contains(first)) split.removeFirst()
+    }
+
+    private fun addPostNominals(
+        postNominals: String,
+        split: MutableList<String>
+    ) = "${split[1]}, ${split[0]} $postNominals"
+
+    private fun extractPostNominals(split: MutableList<String>): String? {
+        return if (split.size > 2)
+            split.subList(2, split.size).joinToString(" ")
+        else null
     }
 }

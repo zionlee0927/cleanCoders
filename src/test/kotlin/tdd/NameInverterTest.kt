@@ -47,4 +47,11 @@ internal class NameInverterTest{
     fun given_post_nominals_exists___post_nominals_stays_at_end(){
         assertThat(nameInverter.inverter("First Last Sr.")).isEqualTo("Last, First Sr.")
     }
+
+    @Test
+    fun integrated_case(){
+        assertThat(nameInverter.inverter("   Rober Martin III esq.  ")).isEqualTo("Martin, Rober III esq.")
+        assertThat(nameInverter.inverter("   Rober    Martin      III      esq.  Sr. ")).isEqualTo("Martin, Rober III esq. Sr.")
+        assertThat(nameInverter.inverter("First Last Bs. Phd.")).isEqualTo("Last, First Bs. Phd.")
+    }
 }
