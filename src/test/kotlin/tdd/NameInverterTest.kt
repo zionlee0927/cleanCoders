@@ -42,4 +42,9 @@ internal class NameInverterTest{
         assertThat(nameInverter.inverter("Mr. First Last")).isEqualTo("Last, First")
         assertThat(nameInverter.inverter("Mrs. First Last")).isEqualTo("Last, First")
     }
+
+    @Test
+    fun given_post_nominals_exists___post_nominals_stays_at_end(){
+        assertThat(nameInverter.inverter("First Last Sr.")).isEqualTo("Last, First Sr.")
+    }
 }
