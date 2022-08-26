@@ -1,4 +1,4 @@
-package tdd
+package tdd.nameInverter
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
