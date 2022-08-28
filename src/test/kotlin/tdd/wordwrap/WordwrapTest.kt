@@ -42,4 +42,9 @@ internal class WordwrapTest{
     fun wrap_given_xxx_1_return_x_x_x(){
         assertThat(wordwrap.wrap("xxx", 1)).isEqualTo("x\nx\nx")
     }
+
+    @Test
+    fun wrap_given_x_x_1_return_x_x(){
+        assertThat(wordwrap.wrap("x x", 1)).isEqualTo("x\nx")
+    }
 }

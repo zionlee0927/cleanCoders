@@ -10,6 +10,6 @@ class Wordwrap {
 
         if (string.length <= width) return string
 
-        return string.substring(0,width)+"\n"+wrap(string.substring(width),width)
+        return string.substring(0,width)+"\n"+wrap(string.substring(width).trim(),width)
     }
 }
