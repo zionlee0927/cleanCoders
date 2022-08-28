@@ -6,7 +6,10 @@ class Wordwrap {
     }
 
     fun wrap(string: String?, width: Int): String {
-        return if (string.isNullOrEmpty()) ""
-        else string
+        if (string.isNullOrEmpty()) return ""
+
+        if (string.length <= width) return string
+
+        return string.substring(0,width)+"\n"+string.substring(width)
     }
 }
