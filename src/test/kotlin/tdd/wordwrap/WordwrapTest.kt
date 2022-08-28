@@ -52,4 +52,11 @@ internal class WordwrapTest{
     fun wrap_given_x_xx_3_return_x_xx(){
         assertThat(wordwrap.wrap("x xx", 3)).isEqualTo("x\nxx")
     }
+
+    @Test
+    fun wrap_given_complex(){
+        val complex = "four score and seven years ago our fathers brought forth upon this continent"
+        val expected = "four\nscore\nand\nseven\nyears\nago our\nfathers\nbrought\nforth\nupon\nthis\ncontine\nnt"
+        assertThat(wordwrap.wrap(complex, 7)).isEqualTo(expected)
+    }
 }
