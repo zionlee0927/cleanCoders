@@ -1,12 +1,16 @@
 package tdd.wordwrap
 
-import org.junit.jupiter.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class WordwrapTest{
 
     @Test
-    fun test(){
+    fun wrapGettingStuck1(){
+        assertThat(wrapGettingStuck("word word", 4)).isEqualTo("word\nword")
+    }
 
+    private fun wrapGettingStuck(string: String, width: Int): String {
+        return string.replace(" ", "\n")
     }
 }
