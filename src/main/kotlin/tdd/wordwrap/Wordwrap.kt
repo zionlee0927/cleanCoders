@@ -10,6 +10,10 @@ class Wordwrap {
 
         if (string.length <= width) return string
 
-        return string.substring(0,width)+"\n"+wrap(string.substring(width).trim(),width)
+        var breakPoint = string.lastIndexOf(" ", width)
+
+        if (breakPoint == -1) breakPoint = width
+
+        return string.substring(0,breakPoint)+"\n"+wrap(string.substring(breakPoint).trim(),width)
     }
 }
